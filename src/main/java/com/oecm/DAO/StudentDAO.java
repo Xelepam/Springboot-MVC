@@ -3,27 +3,15 @@ package com.oecm.DAO;
 import com.oecm.Entity.Student;
 
 import java.util.Collection;
-import java.util.HashMap;
-import java.util.Map;
 
-public class StudentDAO {
+public interface StudentDAO {
+    Collection<Student> getAllStudents();
 
-    private static Map<Integer, Student> students;
+    Student getStudentById(int id);
 
-    static {
+    void removeStudentById(int id);
 
-        students = new HashMap<Integer, Student>() {
+    void updateStudent(Student student);
 
-            {
-                put(1, new Student(1, "Omar", "Computer Science"));
-                put(2, new Student(2, "David", "Mechanical Engineering"));
-                put(3, new Student(3, "Miguel", "Electrical Engineering"));
-            }
-
-        };
-    }
-
-    public Collection<Student> getAllStudents() {
-        return this.students.values();
-    }
+    void insertStudentToDb(Student student);
 }
